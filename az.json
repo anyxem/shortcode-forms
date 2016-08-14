@@ -1,0 +1,1976 @@
+{  
+  "azexo_product_search_form":{  
+    "name":"AZEXO - Product Search Form",
+    "base":"azexo_product_search_form",
+    "category":"AZEXO",
+    "show_settings_on_create":false
+  },
+  "azexo_product_fields_wrapper":{  
+    "name":"AZEXO - Product Fields Wrapper",
+    "base":"azexo_product_fields_wrapper",
+    "category":"AZEXO",
+    "as_parent":{  
+      "except":"azexo_product_fields_wrapper"
+    },
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":true,
+    "is_container":true,
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file."
+      },
+      {  
+        "type":"css_editor",
+        "heading":"Css",
+        "param_name":"css",
+        "group":"Design options"
+      }
+    ],
+    "js_view":"VcColumnView"
+  },
+  "azexo_panel":{  
+    "name":"AZEXO - Panel",
+    "base":"azexo_panel",
+    "category":"AZEXO",
+    "as_parent":{  
+      "except":"azexo_panel"
+    },
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":true,
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_panel.php",
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Panel title",
+        "param_name":"title",
+        "description":"Enter text which will be used as title. Leave blank if no title is needed.",
+        "admin_label":true
+      },
+      {  
+        "type":"vc_link",
+        "heading":"URL (Link)",
+        "param_name":"link",
+        "dependency":{  
+          "element":"title",
+          "not_empty":true
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "admin_label":true,
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file."
+      },
+      {  
+        "type":"css_editor",
+        "heading":"Css",
+        "param_name":"css",
+        "group":"Design options"
+      }
+    ],
+    "js_view":"VcColumnView"
+  },
+  "azexo_taxonomy":{  
+    "name":"AZEXO - Taxonomy",
+    "base":"azexo_taxonomy",
+    "category":"AZEXO",
+    "description":"A list or dropdown of categories",
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_taxonomy.php",
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Widget title",
+        "param_name":"title",
+        "description":"What text use as a widget title. Leave blank to use default widget title.",
+        "value":"Categories"
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Taxonomy",
+        "param_name":"taxonomy",
+        "value":{  
+          "Select":"",
+          "Categories":"category",
+          "Tags":"product_type",
+          "Navigation Menus":"nav_menu",
+          "Link Categories":"link_category",
+          "Format":"post_format",
+          "Listing Categories":"product_cat",
+          "Listing Tags":"product_tag",
+          "Shipping Classes":"product_shipping_class",
+          "Widget type":"widget_type"
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Display options",
+        "param_name":"options",
+        "value":{  
+          "Dropdown":"dropdown",
+          "Show post counts":"count",
+          "Show hierarchy":"hierarchical"
+        },
+        "description":"Select display options for categories."
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"Style particular content element differently - add a class name and refer to it in custom CSS."
+      }
+    ]
+  },
+  "azexo_carousel":{  
+    "name":"AZEXO - Carousel",
+    "base":"azexo_carousel",
+    "category":"AZEXO",
+    "as_parent":{  
+      "only":"azexo_generic_content, azexo_html"
+    },
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":true,
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_carousel.php",
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Carousel title",
+        "param_name":"title",
+        "description":"Enter text which will be used as title. Leave blank if no title is needed."
+      },
+      {  
+        "type":"textfield",
+        "heading":"Item margin",
+        "param_name":"item_margin",
+        "value":"0"
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Center item?",
+        "param_name":"center",
+        "value":{  
+          "Yes, please":"yes"
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Autoplay?",
+        "param_name":"autoplay",
+        "value":{  
+          "Yes, please":"yes"
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Loop?",
+        "param_name":"loop",
+        "value":{  
+          "Yes, please":"yes"
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Contents per carousel item",
+        "param_name":"contents_per_item",
+        "value":"1"
+      },
+      {  
+        "type":"param_group",
+        "heading":"Responsive",
+        "param_name":"responsive",
+        "value":"%5B%7B%22window_width%22%3A%220%22%2C%22items%22%3A%221%22%7D%2C%7B%22window_width%22%3A%22768%22%2C%22items%22%3A%221%22%7D%5D",
+        "params":[  
+          {  
+            "type":"textfield",
+            "heading":"Window width",
+            "param_name":"window_width",
+            "admin_label":true
+          },
+          {  
+            "type":"textfield",
+            "heading":"Items",
+            "param_name":"items",
+            "admin_label":true
+          }
+        ]
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.",
+        "admin_label":true
+      },
+      {  
+        "type":"css_editor",
+        "heading":"Css",
+        "param_name":"css",
+        "group":"Design options"
+      }
+    ],
+    "js_view":"VcColumnView"
+  },
+  "azexo_filters":{  
+    "name":"AZEXO - Filters",
+    "base":"azexo_filters",
+    "category":"AZEXO",
+    "as_parent":{  
+      "only":"azexo_generic_content, azexo_html"
+    },
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":true,
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_filters.php",
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Filters title",
+        "param_name":"title",
+        "description":"Enter text which will be used as title. Leave blank if no title is needed."
+      },
+      {  
+        "type":"param_group",
+        "heading":"Filters",
+        "param_name":"filters",
+        "value":"%5B%7B%22title%22%3A%22All%22%2C%22selector%22%3A%22%3E+%2A%22%7D%5D",
+        "params":[  
+          {  
+            "type":"textfield",
+            "heading":"Title",
+            "param_name":"title",
+            "admin_label":true
+          },
+          {  
+            "type":"textfield",
+            "heading":"Selector",
+            "param_name":"selector"
+          }
+        ]
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Masonry?",
+        "param_name":"masonry",
+        "value":{  
+          "Yes, please":"yes"
+        }
+      },
+      {  
+        "type":"param_group",
+        "heading":"Masonry responsive",
+        "param_name":"responsive",
+        "dependency":{  
+          "element":"masonry",
+          "value":[  
+            "yes"
+          ]
+        },
+        "value":"%5B%7B%22window_width%22%3A%220%22%2C%22items%22%3A%221%22%7D%2C%7B%22window_width%22%3A%22768%22%2C%22items%22%3A%221%22%7D%5D",
+        "params":[  
+          {  
+            "type":"textfield",
+            "heading":"Window width",
+            "param_name":"window_width",
+            "admin_label":true
+          },
+          {  
+            "type":"textfield",
+            "heading":"Items",
+            "param_name":"items",
+            "admin_label":true
+          }
+        ]
+      },
+      {  
+        "type":"textfield",
+        "heading":"Masonry gutter (px)",
+        "param_name":"gutter",
+        "value":"0",
+        "dependency":{  
+          "element":"masonry",
+          "value":[  
+            "yes"
+          ]
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.",
+        "admin_label":true
+      },
+      {  
+        "type":"css_editor",
+        "heading":"Css",
+        "param_name":"css",
+        "group":"Design options"
+      }
+    ],
+    "js_view":"VcColumnView"
+  },
+  "azexo_generic_content":{  
+    "name":"AZEXO - Generic Content",
+    "base":"azexo_generic_content",
+    "category":"AZEXO",
+    "controls":"full",
+    "show_settings_on_create":true,
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_generic_content.php",
+    "params":[  
+      {  
+        "type":"dropdown",
+        "heading":"Media type",
+        "param_name":"media_type",
+        "admin_label":true,
+        "value":{  
+          "No media":"no_media",
+          "Image":"image",
+          "Gallery":"gallery",
+          "Video":"video",
+          "Icon":"icon",
+          "Image and Icon":"image_icon"
+        },
+        "group":"Media"
+      },
+      {  
+        "type":"attach_image",
+        "heading":"Image",
+        "param_name":"image",
+        "group":"Media",
+        "dependency":{  
+          "element":"media_type",
+          "value":[  
+            "image",
+            "image_icon"
+          ]
+        }
+      },
+      {  
+        "type":"attach_images",
+        "heading":"Images",
+        "param_name":"gallery",
+        "group":"Media",
+        "dependency":{  
+          "element":"media_type",
+          "value":[  
+            "gallery"
+          ]
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Thumbnails?",
+        "param_name":"thumbnails",
+        "group":"Media",
+        "value":{  
+          "Yes, please":"yes"
+        },
+        "dependency":{  
+          "element":"media_type",
+          "value":[  
+            "gallery"
+          ]
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Image size",
+        "param_name":"img_size",
+        "group":"Media",
+        "value":"thumbnail",
+        "description":"Enter image size (Example: &quot;thumbnail&quot;, &quot;medium&quot;, &quot;large&quot;, &quot;full&quot; or other sizes defined by theme). Alternatively enter size in pixels (Example: 200x100 (Width x Height)). Leave parameter empty to use &quot;thumbnail&quot; by default.",
+        "dependency":{  
+          "element":"media_type",
+          "value":[  
+            "image",
+            "image_icon",
+            "gallery"
+          ]
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Video link",
+        "param_name":"video",
+        "group":"Media",
+        "value":"http:\/\/vimeo.com\/92033601",
+        "description":"Enter link to video (Note: read more about available formats at WordPress codex page).",
+        "dependency":{  
+          "element":"media_type",
+          "value":[  
+            "video"
+          ]
+        }
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Icon library",
+        "value":{  
+          "Font Awesome":"fontawesome",
+          "Open Iconic":"openiconic",
+          "Typicons":"typicons",
+          "Entypo":"entypo",
+          "Linecons":"linecons",
+          "Medical icons":"medicalicons"
+        },
+        "param_name":"icon_library",
+        "group":"Media",
+        "description":"Select icon library.",
+        "dependency":{  
+          "element":"media_type",
+          "value":[  
+            "icon",
+            "image_icon"
+          ]
+        }
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_medicalicons",
+        "group":"Media",
+        "value":"i-womens-health",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"medicalicons",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"medicalicons"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_fontawesome",
+        "group":"Media",
+        "value":"fa fa-adjust",
+        "settings":{  
+          "emptyIcon":false,
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"fontawesome"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_openiconic",
+        "group":"Media",
+        "value":"vc-oi vc-oi-dial",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"openiconic",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"openiconic"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_typicons",
+        "group":"Media",
+        "value":"typcn typcn-adjust-brightness",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"typicons",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"typicons"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_entypo",
+        "group":"Media",
+        "value":"entypo-icon entypo-icon-note",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"entypo",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"entypo"
+        }
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_linecons",
+        "group":"Media",
+        "value":"vc_li vc_li-heart",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"linecons",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"linecons"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Link click effect",
+        "value":{  
+          "Classic link":"classic",
+          "Image popup":"image_popup",
+          "IFrame  popup":"iframe_popup"
+        },
+        "param_name":"media_link_click",
+        "group":"Media",
+        "dependency":{  
+          "element":"media_type",
+          "value":[  
+            "image",
+            "icon",
+            "image_icon"
+          ]
+        }
+      },
+      {  
+        "type":"vc_link",
+        "heading":"URL (Link)",
+        "param_name":"media_link",
+        "group":"Media",
+        "dependency":{  
+          "element":"media_type",
+          "value":[  
+            "image",
+            "icon",
+            "image_icon"
+          ]
+        }
+      },
+      {  
+        "type":"textarea_raw_html",
+        "heading":"Extra",
+        "param_name":"extra",
+        "group":"Header"
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Link click effect",
+        "value":{  
+          "Classic link":"classic",
+          "Image popup":"image_popup",
+          "IFrame  popup":"iframe_popup"
+        },
+        "param_name":"title_link_click",
+        "group":"Header"
+      },
+      {  
+        "type":"vc_link",
+        "heading":"URL (Link)",
+        "param_name":"title_link",
+        "group":"Header"
+      },
+      {  
+        "type":"textfield",
+        "heading":"Title",
+        "param_name":"title",
+        "admin_label":true,
+        "group":"Header"
+      },
+      {  
+        "type":"textarea_raw_html",
+        "heading":"Meta",
+        "param_name":"meta",
+        "group":"Header"
+      },
+      {  
+        "type":"textarea_html",
+        "heading":"Content",
+        "holder":"div",
+        "param_name":"content",
+        "group":"Content",
+        "value":"I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Link click effect",
+        "value":{  
+          "Classic link":"classic",
+          "Image popup":"image_popup",
+          "IFrame  popup":"iframe_popup"
+        },
+        "param_name":"footer_link_click",
+        "group":"Footer"
+      },
+      {  
+        "type":"vc_link",
+        "heading":"URL (Link)",
+        "param_name":"footer_link",
+        "group":"Footer"
+      },
+      {  
+        "type":"textarea_raw_html",
+        "heading":"Footer",
+        "param_name":"footer",
+        "group":"Footer"
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Trigger?",
+        "param_name":"trigger",
+        "value":{  
+          "Yes, please":"yes"
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Trigger ON selector",
+        "param_name":"trigger_on",
+        "dependency":{  
+          "element":"trigger",
+          "value":[  
+            "yes"
+          ]
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Trigger OFF selector",
+        "param_name":"trigger_off",
+        "dependency":{  
+          "element":"trigger",
+          "value":[  
+            "yes"
+          ]
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Trigger Class",
+        "param_name":"trigger_class",
+        "dependency":{  
+          "element":"trigger",
+          "value":[  
+            "yes"
+          ]
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Scroll Reveal settings",
+        "param_name":"sr"
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "admin_label":true,
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file."
+      },
+      {  
+        "type":"css_editor",
+        "heading":"Css",
+        "param_name":"css",
+        "group":"Design options"
+      }
+    ]
+  },
+  "azexo_progress_bar":{  
+    "name":"AZEXO - Progress Bar",
+    "base":"azexo_progress_bar",
+    "icon":"icon-wpb-graph",
+    "category":"AZEXO",
+    "description":"Animated progress bar",
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_progress_bar.php",
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Widget title",
+        "param_name":"title",
+        "description":"Enter text used as widget title (Note: located above content element)."
+      },
+      {  
+        "type":"param_group",
+        "heading":"Values",
+        "param_name":"values",
+        "description":"Enter values for graph - value, title and color.",
+        "value":"%5B%7B%22label%22%3A%22Development%22%2C%22value%22%3A%2290%22%7D%2C%7B%22label%22%3A%22Design%22%2C%22value%22%3A%2280%22%7D%2C%7B%22label%22%3A%22Marketing%22%2C%22value%22%3A%2270%22%7D%5D",
+        "params":[  
+          {  
+            "type":"dropdown",
+            "heading":"Icon library",
+            "value":{  
+              "Font Awesome":"fontawesome",
+              "Open Iconic":"openiconic",
+              "Typicons":"typicons",
+              "Entypo":"entypo",
+              "Linecons":"linecons"
+            },
+            "param_name":"icon_library",
+            "group":"Media",
+            "description":"Select icon library.",
+            "dependency":{  
+              "element":"media_type",
+              "value":[  
+                "icon",
+                "image_icon"
+              ]
+            }
+          },
+          {  
+            "type":"iconpicker",
+            "heading":"Icon",
+            "param_name":"icon_fontawesome",
+            "group":"Media",
+            "value":"fa fa-adjust",
+            "settings":{  
+              "emptyIcon":false,
+              "iconsPerPage":4000
+            },
+            "dependency":{  
+              "element":"icon_library",
+              "value":"fontawesome"
+            },
+            "description":"Select icon from library."
+          },
+          {  
+            "type":"iconpicker",
+            "heading":"Icon",
+            "param_name":"icon_openiconic",
+            "group":"Media",
+            "value":"vc-oi vc-oi-dial",
+            "settings":{  
+              "emptyIcon":false,
+              "type":"openiconic",
+              "iconsPerPage":4000
+            },
+            "dependency":{  
+              "element":"icon_library",
+              "value":"openiconic"
+            },
+            "description":"Select icon from library."
+          },
+          {  
+            "type":"iconpicker",
+            "heading":"Icon",
+            "param_name":"icon_typicons",
+            "group":"Media",
+            "value":"typcn typcn-adjust-brightness",
+            "settings":{  
+              "emptyIcon":false,
+              "type":"typicons",
+              "iconsPerPage":4000
+            },
+            "dependency":{  
+              "element":"icon_library",
+              "value":"typicons"
+            },
+            "description":"Select icon from library."
+          },
+          {  
+            "type":"iconpicker",
+            "heading":"Icon",
+            "param_name":"icon_entypo",
+            "group":"Media",
+            "value":"entypo-icon entypo-icon-note",
+            "settings":{  
+              "emptyIcon":false,
+              "type":"entypo",
+              "iconsPerPage":4000
+            },
+            "dependency":{  
+              "element":"icon_library",
+              "value":"entypo"
+            }
+          },
+          {  
+            "type":"iconpicker",
+            "heading":"Icon",
+            "param_name":"icon_linecons",
+            "group":"Media",
+            "value":"vc_li vc_li-heart",
+            "settings":{  
+              "emptyIcon":false,
+              "type":"linecons",
+              "iconsPerPage":4000
+            },
+            "dependency":{  
+              "element":"icon_library",
+              "value":"linecons"
+            },
+            "description":"Select icon from library."
+          },
+          {  
+            "type":"textfield",
+            "heading":"Label",
+            "param_name":"label",
+            "description":"Enter text used as title of bar.",
+            "admin_label":true
+          },
+          {  
+            "type":"textfield",
+            "heading":"Value",
+            "param_name":"value",
+            "description":"Enter value of bar.",
+            "admin_label":true
+          },
+          {  
+            "type":"dropdown",
+            "heading":"Color",
+            "param_name":"color",
+            "value":{  
+              "Default":"",
+              "Classic Grey":"bar_grey",
+              "Classic Blue":"bar_blue",
+              "Classic Turquoise":"bar_turquoise",
+              "Classic Green":"bar_green",
+              "Classic Orange":"bar_orange",
+              "Classic Red":"bar_red",
+              "Classic Black":"bar_black",
+              "Blue":"blue",
+              "Turquoise":"turquoise",
+              "Pink":"pink",
+              "Violet":"violet",
+              "Peacoc":"peacoc",
+              "Chino":"chino",
+              "Mulled Wine":"mulled-wine",
+              "Vista Blue":"vista-blue",
+              "Black":"black",
+              "Grey":"grey",
+              "Orange":"orange",
+              "Sky":"sky",
+              "Green":"green",
+              "Juicy pink":"juicy-pink",
+              "Sandy brown":"sandy-brown",
+              "Purple":"purple",
+              "White":"white",
+              "Custom Color":"custom"
+            },
+            "description":"Select single bar background color.",
+            "admin_label":true,
+            "param_holder_class":"vc_colored-dropdown"
+          },
+          {  
+            "type":"colorpicker",
+            "heading":"Custom color",
+            "param_name":"customcolor",
+            "description":"Select custom single bar background color.",
+            "dependency":{  
+              "element":"color",
+              "value":[  
+                "custom"
+              ]
+            }
+          },
+          {  
+            "type":"colorpicker",
+            "heading":"Custom text color",
+            "param_name":"customtxtcolor",
+            "description":"Select custom single bar text color.",
+            "dependency":{  
+              "element":"color",
+              "value":[  
+                "custom"
+              ]
+            }
+          }
+        ]
+      },
+      {  
+        "type":"textfield",
+        "heading":"Units",
+        "param_name":"units",
+        "description":"Enter measurement units (Example: %, px, points, etc. Note: graph value and units will be appended to graph title)."
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Color",
+        "param_name":"bgcolor",
+        "value":{  
+          "Classic Grey":"bar_grey",
+          "Classic Blue":"bar_blue",
+          "Classic Turquoise":"bar_turquoise",
+          "Classic Green":"bar_green",
+          "Classic Orange":"bar_orange",
+          "Classic Red":"bar_red",
+          "Classic Black":"bar_black",
+          "Blue":"blue",
+          "Turquoise":"turquoise",
+          "Pink":"pink",
+          "Violet":"violet",
+          "Peacoc":"peacoc",
+          "Chino":"chino",
+          "Mulled Wine":"mulled-wine",
+          "Vista Blue":"vista-blue",
+          "Black":"black",
+          "Grey":"grey",
+          "Orange":"orange",
+          "Sky":"sky",
+          "Green":"green",
+          "Juicy pink":"juicy-pink",
+          "Sandy brown":"sandy-brown",
+          "Purple":"purple",
+          "White":"white",
+          "Custom Color":"custom"
+        },
+        "description":"Select bar background color.",
+        "admin_label":true,
+        "param_holder_class":"vc_colored-dropdown"
+      },
+      {  
+        "type":"colorpicker",
+        "heading":"Bar custom background color",
+        "param_name":"custombgcolor",
+        "description":"Select custom background color for bars.",
+        "dependency":{  
+          "element":"bgcolor",
+          "value":[  
+            "custom"
+          ]
+        }
+      },
+      {  
+        "type":"colorpicker",
+        "heading":"Bar custom text color",
+        "param_name":"customtxtcolor",
+        "description":"Select custom text color for bars.",
+        "dependency":{  
+          "element":"bgcolor",
+          "value":[  
+            "custom"
+          ]
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Options",
+        "param_name":"options",
+        "value":{  
+          "Add stripes":"striped",
+          "Add animation (Note: visible only with striped bar).":"animated"
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"Style particular content element differently - add a class name and refer to it in custom CSS."
+      },
+      {  
+        "type":"css_editor",
+        "heading":"CSS box",
+        "param_name":"css",
+        "group":"Design Options"
+      }
+    ]
+  },
+  "azexo_tabs":{  
+    "name":"AZEXO - Tabs",
+    "base":"azexo_tabs",
+    "show_settings_on_create":false,
+    "is_container":true,
+    "icon":"icon-wpb-ui-tab-content",
+    "category":"AZEXO",
+    "description":"Tabbed content",
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_tabs.php",
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Widget title",
+        "param_name":"title",
+        "description":"Enter text used as widget title (Note: located above content element)."
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"Style particular content element differently - add a class name and refer to it in custom CSS."
+      }
+    ],
+    "custom_markup":"\n<div class=\"wpb_tabs_holder wpb_holder vc_container_for_children\">\n<ul class=\"tabs_controls\">\n<\/ul>\n%content%\n<\/div>",
+    "default_content":"\n[azexo_tab title=\"Tab 1\" tab_id=\"\"][\/azexo_tab]\n[azexo_tab title=\"Tab 2\" tab_id=\"\"][\/azexo_tab]\n",
+    "js_view":"AZEXOTabsView"
+  },
+  "azexo_tab":{  
+    "name":"Tab",
+    "base":"azexo_tab",
+    "allowed_container_element":"vc_row",
+    "is_container":true,
+    "content_element":false,
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_tab.php",
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Title",
+        "param_name":"title",
+        "description":"Enter title of tab."
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Icon?",
+        "param_name":"icon",
+        "value":{  
+          "Yes, please":"yes"
+        }
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Icon library",
+        "value":{  
+          "Font Awesome":"fontawesome",
+          "Open Iconic":"openiconic",
+          "Typicons":"typicons",
+          "Entypo":"entypo",
+          "Linecons":"linecons"
+        },
+        "param_name":"icon_library",
+        "description":"Select icon library.",
+        "dependency":{  
+          "element":"icon",
+          "value":[  
+            "yes"
+          ]
+        }
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_fontawesome",
+        "value":"fa fa-adjust",
+        "settings":{  
+          "emptyIcon":false,
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"fontawesome"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_openiconic",
+        "value":"vc-oi vc-oi-dial",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"openiconic",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"openiconic"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_typicons",
+        "value":"typcn typcn-adjust-brightness",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"typicons",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"typicons"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_entypo",
+        "value":"entypo-icon entypo-icon-note",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"entypo",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"entypo"
+        }
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_linecons",
+        "value":"vc_li vc_li-heart",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"linecons",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"linecons"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"tab_id",
+        "heading":"Tab ID",
+        "param_name":"tab_id"
+      }
+    ],
+    "js_view":"AZEXOTabView"
+  },
+  "azexo_accordion":{  
+    "name":"AZEXO - Accordion",
+    "base":"azexo_accordion",
+    "show_settings_on_create":false,
+    "is_container":true,
+    "icon":"icon-wpb-ui-accordion",
+    "category":"AZEXO",
+    "description":"Collapsible content panels",
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_accordion.php",
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Widget title",
+        "param_name":"title",
+        "description":"Enter text used as widget title (Note: located above content element)."
+      },
+      {  
+        "type":"textfield",
+        "heading":"Active section",
+        "param_name":"active_section",
+        "value":1,
+        "description":"Enter section number to be active on load or enter \"false\" to collapse all sections."
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Allow collapse all sections?",
+        "param_name":"collapsible",
+        "description":"If checked, it is allowed to collapse all sections.",
+        "value":{  
+          "Yes":"yes"
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"Style particular content element differently - add a class name and refer to it in custom CSS."
+      }
+    ],
+    "custom_markup":"\n<div class=\"wpb_accordion_holder wpb_holder clearfix vc_container_for_children\">\n%content%\n<\/div>\n<div class=\"tab_controls\">\n    <a class=\"add_tab\" title=\"Add section\"><span class=\"vc_icon\"><\/span> <span class=\"tab-label\">Add section<\/span><\/a>\n<\/div>\n",
+    "default_content":"\n    [azexo_accordion_section title=\"Section 1\"][\/azexo_accordion_section]\n    [azexo_accordion_section title=\"Section 2\"][\/azexo_accordion_section]\n",
+    "js_view":"AZEXOAccordionView"
+  },
+  "azexo_accordion_section":{  
+    "name":"Section",
+    "base":"azexo_accordion_section",
+    "allowed_container_element":"azexo_row",
+    "is_container":true,
+    "content_element":false,
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_accordion_section.php",
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Title",
+        "param_name":"title",
+        "value":"Section",
+        "description":"Enter accordion section title."
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Icon?",
+        "param_name":"icon",
+        "value":{  
+          "Yes, please":"yes"
+        }
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Icon library",
+        "value":{  
+          "Font Awesome":"fontawesome",
+          "Open Iconic":"openiconic",
+          "Typicons":"typicons",
+          "Entypo":"entypo",
+          "Linecons":"linecons"
+        },
+        "param_name":"icon_library",
+        "description":"Select icon library.",
+        "dependency":{  
+          "element":"icon",
+          "value":[  
+            "yes"
+          ]
+        }
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_fontawesome",
+        "value":"fa fa-adjust",
+        "settings":{  
+          "emptyIcon":false,
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"fontawesome"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_openiconic",
+        "value":"vc-oi vc-oi-dial",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"openiconic",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"openiconic"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_typicons",
+        "value":"typcn typcn-adjust-brightness",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"typicons",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"typicons"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_entypo",
+        "value":"entypo-icon entypo-icon-note",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"entypo",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"entypo"
+        }
+      },
+      {  
+        "type":"iconpicker",
+        "heading":"Icon",
+        "param_name":"icon_linecons",
+        "value":"vc_li vc_li-heart",
+        "settings":{  
+          "emptyIcon":false,
+          "type":"linecons",
+          "iconsPerPage":4000
+        },
+        "dependency":{  
+          "element":"icon_library",
+          "value":"linecons"
+        },
+        "description":"Select icon from library."
+      },
+      {  
+        "type":"el_id",
+        "heading":"Section ID",
+        "param_name":"el_id",
+        "description":"Enter optional row ID. Make sure it is unique, and it is valid as w3c specification: <a target=\"_blank\" href=\"http:\/\/www.w3schools.com\/tags\/att_global_id.asp\">link<\/a> (Must not have spaces)"
+      }
+    ],
+    "js_view":"AZEXOAccordionTabView"
+  },
+  "azexo_html":{  
+    "name":"AZEXO HTML",
+    "base":"azexo_html",
+    "icon":"icon-wpb-raw-html",
+    "wrapper_class":"clearfix",
+    "category":"AZEXO",
+    "html_template":"\/var\/www\/html\/wordpress4\/wp-content\/plugins\/azexo_vc_elements\/\/templates\/azexo_html.php",
+    "description":"Output raw HTML code on your page",
+    "params":[  
+      {  
+        "type":"azexo_html",
+        "holder":"div",
+        "heading":"Raw HTML",
+        "param_name":"content",
+        "value":"PHA+SSBhbSByYXcgaHRtbCBibG9jay48YnIvPkNsaWNrIGVkaXQgYnV0dG9uIHRvIGNoYW5nZSB0aGlzIGh0bWw8L3A+",
+        "description":"Click to change."
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"Style particular content element differently - add a class name and refer to it in custom CSS."
+      },
+      {  
+        "type":"css_editor",
+        "heading":"CSS box",
+        "param_name":"css",
+        "group":"Design Options"
+      },
+      {  
+        "type":"textfield",
+        "heading":"Helper",
+        "param_name":"helper",
+        "admin_label":true,
+        "description":"Helper text in admin side."
+      }
+    ]
+  },
+  "azexo_page_title":{  
+    "name":"AZEXO - Page Title",
+    "base":"azexo_page_title",
+    "category":"AZEXO",
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":false
+  },
+  "azexo_search_form":{  
+    "name":"AZEXO - Search Form",
+    "base":"azexo_search_form",
+    "category":"AZEXO",
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":false
+  },
+  "azexo_template_part":{  
+    "name":"AZEXO - Template part",
+    "base":"azexo_template_part",
+    "category":"AZEXO",
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":true,
+    "params":[  
+      {  
+        "type":"dropdown",
+        "heading":"Template part",
+        "param_name":"template_part",
+        "value":{  
+          "None":"",
+          "general-author-bio.php":"general-author-bio.php",
+          "general-title.php":"general-title.php",
+          "header-gmap-toggle.php":"header-gmap-toggle.php",
+          "header-my-account.php":"header-my-account.php",
+          "header-product-search.php":"header-product-search.php",
+          "header-search-modal.php":"header-search-modal.php",
+          "header-search-toggle.php":"header-search-toggle.php",
+          "header-social-login.php":"header-social-login.php"
+        },
+        "admin_label":true
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file."
+      },
+      {  
+        "type":"css_editor",
+        "heading":"Css",
+        "param_name":"css",
+        "group":"Design options"
+      }
+    ]
+  },
+  "azexo_dashboard_links":{  
+    "name":"AZEXO - dashboard links widget",
+    "base":"azexo_dashboard_links",
+    "category":"AZEXO",
+    "description":"Displays the dashboard links",
+    "show_settings_on_create":false,
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Widget title",
+        "param_name":"title",
+        "description":"What text use as a widget title. Leave blank to use default widget title.",
+        "value":"Dashboard"
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file."
+      }
+    ]
+  },
+  "azexo_post":{  
+    "name":"AZEXO - Post",
+    "base":"azexo_post",
+    "category":"AZEXO",
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":true,
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Post ID",
+        "param_name":"post_id",
+        "description":"Post ID"
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Post type",
+        "param_name":"post_type",
+        "value":[  
+          [  
+            "post",
+            "Posts"
+          ],
+          [  
+            "page",
+            "Pages"
+          ],
+          [  
+            "attachment",
+            "Media"
+          ],
+          [  
+            "shop_order_vendor",
+            "Vendor Orders"
+          ],
+          [  
+            "product",
+            "Listings"
+          ],
+          [  
+            "product_variation",
+            "Variations"
+          ],
+          [  
+            "shop_order",
+            "Orders"
+          ],
+          [  
+            "shop_order_refund",
+            "Refunds"
+          ],
+          [  
+            "shop_coupon",
+            "Coupons"
+          ],
+          [  
+            "shop_webhook",
+            "Webhooks"
+          ],
+          [  
+            "azh_widget",
+            "AZH Widget"
+          ],
+          [  
+            "wpcf7_contact_form",
+            "Contact Forms"
+          ],
+          [  
+            "vc_widget",
+            "VC Widget"
+          ],
+          [  
+            "azl_profile",
+            "Profile"
+          ],
+          [  
+            "custom",
+            "Custom query"
+          ],
+          [  
+            "ids",
+            "List of IDs"
+          ]
+        ],
+        "dependency":{  
+          "element":"post_id",
+          "is_empty":true
+        }
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Post template",
+        "param_name":"template",
+        "value":{  
+          "Default":"post"
+        },
+        "description":"Post template.",
+        "admin_label":true
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file."
+      },
+      {  
+        "type":"css_editor",
+        "heading":"Css",
+        "param_name":"css",
+        "group":"Design options"
+      }
+    ]
+  },
+  "azexo_post_field":{  
+    "name":"AZEXO - Post field",
+    "base":"azexo_post_field",
+    "category":"AZEXO",
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":true,
+    "params":[  
+      {  
+        "type":"textfield",
+        "heading":"Post ID",
+        "param_name":"post_id",
+        "description":"Post ID"
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Post field",
+        "param_name":"field",
+        "value":{  
+          "None":"",
+          "Loop product sold by":"loop_sold_by"
+        },
+        "description":"Post field.",
+        "admin_label":true
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file."
+      },
+      {  
+        "type":"css_editor",
+        "heading":"Css",
+        "param_name":"css",
+        "group":"Design options"
+      }
+    ]
+  },
+  "azexo_posts_list":{  
+    "name":"AZEXO - Posts List",
+    "base":"azexo_posts_list",
+    "category":"AZEXO",
+    "content_element":true,
+    "controls":"full",
+    "show_settings_on_create":true,
+    "params":[  
+      {  
+        "type":"dropdown",
+        "heading":"Data source",
+        "param_name":"post_type",
+        "value":[  
+          [  
+            "post",
+            "Posts"
+          ],
+          [  
+            "page",
+            "Pages"
+          ],
+          [  
+            "attachment",
+            "Media"
+          ],
+          [  
+            "shop_order_vendor",
+            "Vendor Orders"
+          ],
+          [  
+            "product",
+            "Listings"
+          ],
+          [  
+            "product_variation",
+            "Variations"
+          ],
+          [  
+            "shop_order",
+            "Orders"
+          ],
+          [  
+            "shop_order_refund",
+            "Refunds"
+          ],
+          [  
+            "shop_coupon",
+            "Coupons"
+          ],
+          [  
+            "shop_webhook",
+            "Webhooks"
+          ],
+          [  
+            "azh_widget",
+            "AZH Widget"
+          ],
+          [  
+            "wpcf7_contact_form",
+            "Contact Forms"
+          ],
+          [  
+            "vc_widget",
+            "VC Widget"
+          ],
+          [  
+            "azl_profile",
+            "Profile"
+          ],
+          [  
+            "custom",
+            "Custom query"
+          ],
+          [  
+            "ids",
+            "List of IDs"
+          ]
+        ],
+        "description":"Select content type for your list."
+      },
+      {  
+        "type":"autocomplete",
+        "heading":"Include only",
+        "param_name":"include",
+        "description":"Add posts, pages, etc. by title.",
+        "settings":{  
+          "multiple":true,
+          "sortable":true,
+          "groups":true
+        },
+        "dependency":{  
+          "element":"post_type",
+          "value":[  
+            "ids"
+          ]
+        }
+      },
+      {  
+        "type":"textarea_safe",
+        "heading":"Custom query",
+        "param_name":"custom_query",
+        "description":"Build custom query according to <a href=\"http:\/\/codex.wordpress.org\/Function_Reference\/query_posts\">WordPress Codex<\/a>.",
+        "dependency":{  
+          "element":"post_type",
+          "value":[  
+            "custom"
+          ]
+        }
+      },
+      {  
+        "type":"autocomplete",
+        "heading":"Narrow data source",
+        "param_name":"taxonomies",
+        "settings":{  
+          "multiple":true,
+          "min_length":1,
+          "groups":true,
+          "unique_values":true,
+          "display_inline":true,
+          "delay":500,
+          "auto_focus":true
+        },
+        "param_holder_class":"vc_not-for-custom",
+        "description":"Enter categories, tags or custom taxonomies.",
+        "dependency":{  
+          "element":"post_type",
+          "value_not_equal_to":[  
+            "ids",
+            "custom"
+          ]
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Total items",
+        "param_name":"max_items",
+        "value":10,
+        "param_holder_class":"vc_not-for-custom",
+        "description":"Set max limit for items in list or enter -1 to display all (limited to 1000).",
+        "dependency":{  
+          "element":"post_type",
+          "value_not_equal_to":[  
+            "ids",
+            "custom"
+          ]
+        }
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Order by",
+        "param_name":"orderby",
+        "value":{  
+          "Date":"date",
+          "Order by post ID":"ID",
+          "Author":"author",
+          "Title":"title",
+          "Last modified date":"modified",
+          "Post\/page parent ID":"parent",
+          "Number of comments":"comment_count",
+          "Menu order\/Page Order":"menu_order",
+          "Meta value":"meta_value",
+          "Meta value (numeric)":"meta_value_num",
+          "Random order":"rand"
+        },
+        "description":"Select order type. If &quot;Meta value&quot; or &quot;Meta value Number&quot; is chosen then meta key is required.",
+        "group":"Data Settings",
+        "param_holder_class":"vc_grid-data-type-not-ids",
+        "dependency":{  
+          "element":"post_type",
+          "value_not_equal_to":[  
+            "ids",
+            "custom"
+          ]
+        }
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Sorting",
+        "param_name":"order",
+        "group":"Data Settings",
+        "value":{  
+          "Descending":"DESC",
+          "Ascending":"ASC"
+        },
+        "param_holder_class":"vc_grid-data-type-not-ids",
+        "description":"Select sorting order.",
+        "dependency":{  
+          "element":"post_type",
+          "value_not_equal_to":[  
+            "ids",
+            "custom"
+          ]
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Meta key",
+        "param_name":"meta_key",
+        "description":"Input meta key for list ordering.",
+        "group":"Data Settings",
+        "param_holder_class":"vc_grid-data-type-not-ids",
+        "dependency":{  
+          "element":"orderby",
+          "value":[  
+            "meta_value",
+            "meta_value_num"
+          ]
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Offset",
+        "param_name":"offset",
+        "description":"Number of list elements to displace or pass over.",
+        "group":"Data Settings",
+        "param_holder_class":"vc_grid-data-type-not-ids",
+        "dependency":{  
+          "element":"post_type",
+          "value_not_equal_to":[  
+            "ids",
+            "custom"
+          ]
+        }
+      },
+      {  
+        "type":"autocomplete",
+        "heading":"Exclude",
+        "param_name":"exclude",
+        "description":"Exclude posts, pages, etc. by title.",
+        "group":"Data Settings",
+        "settings":{  
+          "multiple":true
+        },
+        "param_holder_class":"vc_grid-data-type-not-ids",
+        "dependency":{  
+          "element":"post_type",
+          "value_not_equal_to":[  
+            "ids",
+            "custom"
+          ],
+          "callback":"vc_grid_exclude_dependency_callback"
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"List title",
+        "param_name":"title",
+        "description":"Enter text which will be used as title. Leave blank if no title is needed.",
+        "admin_label":true
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Show filter by taxonomy",
+        "param_name":"filter",
+        "value":{  
+          "Select":"",
+          "Categories":"category",
+          "Tags":"product_type",
+          "Navigation Menus":"nav_menu",
+          "Link Categories":"link_category",
+          "Format":"post_format",
+          "Listing Categories":"product_cat",
+          "Listing Tags":"product_tag",
+          "Shipping Classes":"product_shipping_class",
+          "Widget type":"widget_type"
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Group by meta value",
+        "param_name":"group",
+        "description":"Enter meta key which will be used for grouping posts."
+      },
+      {  
+        "type":"textfield",
+        "heading":"Posts clauses filter function name",
+        "param_name":"posts_clauses",
+        "description":"Function which can alter WP_Query object."
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Only content?",
+        "param_name":"only_content",
+        "value":{  
+          "Yes, please":"yes"
+        }
+      },
+      {  
+        "type":"dropdown",
+        "heading":"Post template",
+        "param_name":"template",
+        "value":{  
+          "Default":"post"
+        },
+        "description":"Post template.",
+        "dependency":{  
+          "element":"only_content",
+          "is_empty":true
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Wrap item by DIV?",
+        "param_name":"item_wrapper",
+        "value":{  
+          "Yes, please":"yes"
+        },
+        "dependency":{  
+          "element":"carousel",
+          "is_empty":true
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Show as carousel?",
+        "param_name":"carousel",
+        "value":{  
+          "Yes, please":"yes"
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Carousel stage padding",
+        "param_name":"carousel_stagePadding",
+        "value":"0",
+        "dependency":{  
+          "element":"carousel",
+          "not_empty":true
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Item margin",
+        "param_name":"item_margin",
+        "value":"0",
+        "dependency":{  
+          "element":"carousel",
+          "not_empty":true
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Center item?",
+        "param_name":"center",
+        "value":{  
+          "Yes, please":"yes"
+        },
+        "dependency":{  
+          "element":"carousel",
+          "not_empty":true
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Loop carousel?",
+        "param_name":"loop",
+        "value":{  
+          "Yes, please":"yes"
+        },
+        "dependency":{  
+          "element":"carousel",
+          "not_empty":true
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Posts per carousel item",
+        "param_name":"posts_per_item",
+        "value":"1",
+        "dependency":{  
+          "element":"carousel",
+          "not_empty":true
+        }
+      },
+      {  
+        "type":"checkbox",
+        "heading":"Full width",
+        "param_name":"full_width",
+        "value":{  
+          "Yes, please":"yes"
+        },
+        "dependency":{  
+          "element":"carousel",
+          "not_empty":true
+        }
+      },
+      {  
+        "type":"textfield",
+        "heading":"Extra class name",
+        "param_name":"el_class",
+        "description":"If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file."
+      },
+      {  
+        "type":"css_editor",
+        "heading":"Css",
+        "param_name":"css",
+        "group":"Design options"
+      }
+    ]
+  }
+}
