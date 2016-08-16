@@ -4,8 +4,33 @@
 
   var dialog;
 
+  AZHTML.filtersInit = function(){
+    var headTag = window.document.querySelector('head');
+    var styleTag = window.document.createElement('style');
+    styleTag.id = 'upStyle';
+    headTag.appendChild(styleTag);
+  }
+
+  AZHTML.filtersUpd = function(){
+
+    var formdata = $('form:last').serializeArray();
+    console.log(formdata);
+    var newStyles = `
+[data-depelement] { display: none; }
+${formdata.map(function(item){
+  return (`[data-depelement *= "${item.name}"][data-depvalue *= "${item.value}"] { display: block; }`);
+}).join('')}
+    `;
+
+    window.document.getElementById('upStyle').innerHTML = newStyles;
+
+  }
+
   AZHTML.renderForm = function(shortcode){
 
+
+        this.filtersInit();
+        this.filtersUpd();
 
 
         var fields = AZHTML.renderParams(window.az.shortcodes[shortcode].params);
@@ -47,6 +72,12 @@
         dialog.dialog( "open" ) ;
 
 
+        $('.clone-row').off().on('click',function(e){
+          e.preventDefault();
+          var row = $(this).prev();
+          row.clone().insertAfter(row).find('input').val('');
+        });
+
 
 
         $('.input-colorpicker').colorpicker({
@@ -74,6 +105,7 @@
     console.log(formdata);
     var params = formdata.map(function(item){
 
+console.log(item);
 
       if(item.name.indexOf('[]') > -1){ // Чекбокс значит
         var gname = item.name.split('[]')[0];
@@ -113,35 +145,42 @@
     var sub = sub || false;
     var iter = iter || 0;
 
+
     var fields = params.map(function(item,index){
       var field;
 
+
+
       switch (item.type){
         case 'param_group':
-          field = `<fieldset>
+          field = `<fieldset ${item.dependency!=undefined?`
+          data-depelement="${item.dependency.element}"
+          data-depvalue="${typeof item.dependency.value == 'string' ? item.dependency.value : item.dependency.value.map(function(item){return item}).join(',')}"
+          `:''}>
           <legend>${item.heading}</legend>
 
           <div class="group-row">
-
           ${AZHTML.renderParams(item.params, item.param_name, 0)}
-
-          <a href="" class="">Add</a>
           </div>
+          <a href="" class="clone-row">Add</a>
 
           </fieldset>`;
         break;
         case 'textfield':
-          field = `<p><label>${item.heading}</label>
+          field = `<p ${item.dependency!=undefined?`
+          data-depelement="${item.dependency.element}"
+          data-depvalue="${item.dependency.value.map(function(item){return item}).join(',')}"
+          `:''}><label><span>${item.heading}</span>
           <input name='${sub===false ? item.param_name : sub+'['+iter+']['+item.param_name+']'}' type='text' />
-          <div>${item.description}</div></p>`;
+          ${item.description!=undefined?`<em>${item.description}</em>`:''}</label></p>`;
         break;
         case 'checkbox':
-        field = `<p><div>${item.heading}</div>
+        field = `<div>${item.heading}</div>
             ${Object.keys(item.value).map(function(value,index){
-              return '<input id="'+item.value[value]+'" type="checkbox" name="'+item.param_name+'" value="'+item.value[value]+'"><label for="'+item.value[value]+'">'+value+'</label><br/>';
+              return '<input id="'+item.value[value]+'" type="checkbox" onchange="javascript:AZHTML.filtersUpd()" name="'+item.param_name+'" value="'+item.value[value]+'"><label for="'+item.value[value]+'">'+value+'</label><br/>';
             }).join('')}
-            <div>${item.description}</div>
-          </p>`;
+            ${item.description!=undefined?`<em>${item.description}</em>`:''}
+          `;
         break;
         case 'dropdown':
 
@@ -157,41 +196,63 @@
             }).join('');
           }
 
-          field = `<p><label>${item.heading}</label>
-            <select>
+          field = `<label>${item.heading}</label>
+            <select onchange="javascript:AZHTML.filtersUpd()" name="${item.param_name}">
               ${options}
-            </select> <div>${item.description}</div></p>`;
+            </select>
+            ${item.description!=undefined?` ${item.description!=undefined?`<em>${item.description}</em>`:''}`:''}
+            `;
         break;
         case 'vc_link':
-          field = `<p><label>${item.heading}</label> vc_link <div>${item.description}</div></p>`;
+          field = `<label>${item.heading}</label> vc_link
+          ${item.description!=undefined?` ${item.description!=undefined?`<em>${item.description}</em>`:''}`:''}
+          `;
         break;
         case 'textarea':
-          field = `<p><label>${item.heading}</label> textarea <div>${item.description}</div></p>`;
+          field = `<label>${item.heading}</label> textarea
+          ${item.description!=undefined?` ${item.description!=undefined?`<em>${item.description}</em>`:''}`:''}
+          `;
         break;
         case 'attach_image':
-          field = `<p><label>${item.heading}</label> attach_image <div>${item.description}</div></p>`;
+          field = `<label>${item.heading}</label> attach_image
+          ${item.description!=undefined?` ${item.description!=undefined?`<em>${item.description}</em>`:''}`:''}
+          `;
         break;
         case 'attach_images':
-          field = `<p><label>${item.heading}</label> attach_images <div>${item.description}</div></p>`;
+          field = `<label>${item.heading}</label> attach_images
+          ${item.description!=undefined?` ${item.description!=undefined?`<em>${item.description}</em>`:''}`:''}
+          `;
         break;
         case 'colorpicker':
-          field = `<p><label>${item.heading}</label><input type="text" class="input-colorpicker"> <div>${item.description}</div></p>`;
+          field = `<label>${item.heading}</label><input type="text" class="input-colorpicker">
+          ${item.description!=undefined?` ${item.description!=undefined?`<em>${item.description}</em>`:''}`:''}
+          `;
         break;
         case 'autocomplete':
-          field = `<p><label>${item.heading}</label> autocomplete <div>${item.description}</div></p>`;
+          field = `<label>${item.heading}</label> autocomplete
+          ${item.description!=undefined?` ${item.description!=undefined?`<em>${item.description}</em>`:''}`:''}
+          `;
         break;
         case 'iconpicker':
-          field = `<p><label>${item.heading}</label> iconpicker <div>${item.description}</div></p>`;
+          field = `<label>${item.heading}</label> iconpicker
+          ${item.description!=undefined?` ${item.description!=undefined?`<em>${item.description}</em>`:''}`:''}
+          `;
         break;
 
       }
 
-      return field;
+      return `<p ${item.dependency!=undefined?`
+      data-depelement="${item.dependency.element}"
+      data-depvalue="${typeof item.dependency.value == 'string' ? item.dependency.value : item.dependency.value.map(function(item){return item}).join(',')}"
+      `:''}>`+field+`</p>`;
+
+
     }).join('');
 
     return fields;
 
   }
+
 
   window.AZHTML = AZHTML;
 
