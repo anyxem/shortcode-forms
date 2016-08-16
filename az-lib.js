@@ -18,7 +18,11 @@
     var newStyles = `
 [data-depelement] { display: none; }
 ${formdata.map(function(item){
-  return (`[data-depelement *= "${item.name}"][data-depvalue *= "${item.value}"] { display: block; }`);
+  return (`
+    [data-depelement *= "${item.name}"][data-depvalue *= "${item.value}"] { display: block; }
+    [data-depelement *= "${item.name}"][data-depisempty *= "${item.value.length<1}"] { display: block; }
+    [data-depelement *= "${item.name}"][data-depnotempty *= "${item.value.length>0}"] { display: block; }
+    `);
 }).join('')}
     `;
 
@@ -64,6 +68,9 @@ ${formdata.map(function(item){
             }
           },
           close: function() {
+$('#dialog-form').parent().remove();
+$('#upStyle').remove();
+
 
 
           }
@@ -96,7 +103,8 @@ ${formdata.map(function(item){
 
 
     var formdata = dialog.find('form').serializeArray();
-    dialog.dialog( "close" );
+    $('#dialog-form').parent().remove();
+    $('#upStyle').remove();
 
     var sub_shortcode = [];
     var sub_shortcode_text = '';
@@ -148,9 +156,6 @@ console.log(item);
 
     var fields = params.map(function(item,index){
       var field;
-
-
-
       switch (item.type){
         case 'param_group':
           field = `<fieldset ${item.dependency!=undefined?`
@@ -159,25 +164,22 @@ console.log(item);
           `:''}>
           <legend>${item.heading}</legend>
 
-          <div class="group-row">
+          <span class="group-row">
           ${AZHTML.renderParams(item.params, item.param_name, 0)}
-          </div>
+          </span>
           <a href="" class="clone-row">Add</a>
 
           </fieldset>`;
         break;
         case 'textfield':
-          field = `<p ${item.dependency!=undefined?`
-          data-depelement="${item.dependency.element}"
-          data-depvalue="${item.dependency.value.map(function(item){return item}).join(',')}"
-          `:''}><label><span>${item.heading}</span>
-          <input name='${sub===false ? item.param_name : sub+'['+iter+']['+item.param_name+']'}' type='text' />
-          ${item.description!=undefined?`<em>${item.description}</em>`:''}</label></p>`;
+          field = `<label><span>${item.heading}</span>
+          <input onkeyup="javascript:AZHTML.filtersUpd()" name='${sub===false ? item.param_name : sub+'['+iter+']['+item.param_name+']'}' type='text' />
+          ${item.description!=undefined?`<em>${item.description}</em>`:''}</label>`;
         break;
         case 'checkbox':
         field = `<div>${item.heading}</div>
             ${Object.keys(item.value).map(function(value,index){
-              return '<input id="'+item.value[value]+'" type="checkbox" onchange="javascript:AZHTML.filtersUpd()" name="'+item.param_name+'" value="'+item.value[value]+'"><label for="'+item.value[value]+'">'+value+'</label><br/>';
+              return '<label><input id="'+item.param_name+item.value[value]+'" type="checkbox" onchange="javascript:AZHTML.filtersUpd()" name="'+item.param_name+'" value="'+item.value[value]+'">'+value+'</label><br/>';
             }).join('')}
             ${item.description!=undefined?`<em>${item.description}</em>`:''}
           `;
@@ -241,9 +243,14 @@ console.log(item);
 
       }
 
+      if( field==undefined ){return;}
+
       return `<p ${item.dependency!=undefined?`
       data-depelement="${item.dependency.element}"
-      data-depvalue="${typeof item.dependency.value == 'string' ? item.dependency.value : item.dependency.value.map(function(item){return item}).join(',')}"
+      data-depvalue="${typeof item.dependency.value != 'undefined' ? ( typeof item.dependency.value == 'string' ? item.dependency.value : item.dependency.value.map(function(item){return item}).join(',') ) : ''}"
+      data-depvaluenot="${typeof item.dependency.value_not_equal_to != 'undefined' ? ( typeof item.dependency.value_not_equal_to == 'string' ? item.dependency.value_not_equal_to : item.dependency.value.map(function(item){return item}).join(',') ) : ''}"
+      data-depisempty="${typeof item.dependency.is_empty != 'undefined' && item.dependency.is_empty ? 'true' : 'false'}"
+      data-depnotempty="${typeof item.dependency.not_empty != 'undefined' && item.dependency.not_empty ? 'true' : 'false'}"
       `:''}>`+field+`</p>`;
 
 
